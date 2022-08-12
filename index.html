@@ -22,20 +22,27 @@
 	
 	<body id= "bodyW" style="display:flex; height:100%; margin: 0; padding:0; justify-content:center; align-items:center; flex-direction: column;">
 
+		<span id="fecha" style="font-kerning:none"></span>
+
 		<span id="clocktext" style="font-kerning:none"></span>
 
 		<span id="clocktext2" style="font-kerning:none"></span>
+
+		
 
 		<script>
 			"use strict";
 			
 			var textElem = document.getElementById("clocktext");
 			var textElem2 = document.getElementById("clocktext2");
+			var textElem3 = document.getElementById("fecha");
 			var datoBody = document.getElementById("bodyW");
 			var targetWidth = 0.9;  // Proportion of full screen width
-			var targetWidth2 = 0.6;  
+			var targetWidth2 = 0.5;  
+			var targetWidth3 = 0.1;
 			var curFontSize = 20;  // Do not change
 			var curFontSize2 = 20;  // Do not change
+			var curFontSize3 = 20;
 			var Minutos = 0;
 			var Horas = 0;
 			var colorB = 0; //Color 0 = Verde; 1 = Rojo,
@@ -45,14 +52,17 @@
 			function updateClock() {
 				var d = new Date();
 				var s = "";
+				var f = "";
 				Minutos = d.getMinutes();
 				Horas = d.getHours();
 
 				s += (10 > d.getHours  () ? "0" : "") + d.getHours  () + ":";
 				s += (10 > d.getMinutes() ? "0" : "") + d.getMinutes();
+				f += (10 > d.getDay() ? "0" : "") + d.getDay() + " / " + (10>d.getMonth()?"0":"")+d.getMonth() + " / "+ d.getFullYear();
 				updateBackGround();
 				textElem.textContent = s;
 				textElem2.textContent = ProxCam;
+				textElem3.textContent = f;
 				setTimeout(updateClock, 60000 - d.getTime() % 60000 + 100);
 			}
 			
@@ -138,12 +148,16 @@
 				for (var i = 0; 3 > i; i++) {  // Iterate for better better convergence
 					curFontSize *= targetWidth / (textElem.offsetWidth / textElem.parentNode.offsetWidth);
 					curFontSize2 *= targetWidth2 / (textElem2.offsetWidth / textElem2.parentNode.offsetWidth);
+					curFontSize3 *= targetWidth3 / (textElem3.offsetWidth / textElem3.parentNode.offsetWidth);
+					textElem3.style.fontSize = curFontSize3 + "px";
 					textElem.style.fontSize = curFontSize + "px";
 					textElem2.style.fontSize = curFontSize2 + "px";
 					
 					if(datoBody.offsetHeight <= datoBody.offsetWidth){
 						curFontSize = datoBody.offsetHeight/2 - (datoBody.offsetHeight/2)*0.10;
 						curFontSize2 = curFontSize - (curFontSize*(1-targetWidth2));
+						curFontSize3 = curFontSize - (curFontSize*(1-targetWidth3));
+						textElem3.style.fontSize = curFontSize3 + "px";
 						textElem.style.fontSize = curFontSize + "px";
 						textElem2.style.fontSize = curFontSize2 + "px";
 					}
