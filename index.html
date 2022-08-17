@@ -43,9 +43,11 @@
 			  var targetWidth = 0.9;  // Proportion of full screen width
 			  var targetWidth2 = 0.5;  
 			  var targetWidth3 = 0.15;
+			  var targetWidth4 = 0.08;
 			  var curFontSize = 20;  // Do not change
 			  var curFontSize2 = 20;  // Do not change
 			  var curFontSize3 = 20;
+			  var curFontSize4 = 20;
 			  var Minutos = 0;
 			  var Horas = 0;
 			  var Mes = 0;
@@ -260,18 +262,22 @@
 					  curFontSize *= targetWidth / (textElem.offsetWidth / textElem.parentNode.offsetWidth);
 					  curFontSize2 *= targetWidth2 / (textElem2.offsetWidth / textElem2.parentNode.offsetWidth);
 					  curFontSize3 *= targetWidth3 / (textElem3.offsetWidth / textElem3.parentNode.offsetWidth);
+					  curFontSize4 *= targetWidth4 / (textElem4.offsetWidth / textElem4.parentNode.offsetWidth);
 					  textElem3.style.fontSize = curFontSize3 + "px";
 					  textElem.style.fontSize = curFontSize + "px";
 					  textElem2.style.fontSize = curFontSize2 + "px";
+					  textElem4.style.fontSize = curFontSize4 + "px";
 					  
 					  
 					  if(datoBody.offsetHeight <= datoBody.offsetWidth){
 						  curFontSize = datoBody.offsetHeight/2 - (datoBody.offsetHeight/2)*0.10;
 						  curFontSize2 = curFontSize - (curFontSize*(1-targetWidth2));
 						  curFontSize3 = curFontSize - (curFontSize*(1-targetWidth3));
+						  curFontSize4 = curFontSize - (curFontSize*(1-targetWidth4));
 						  textElem3.style.fontSize = curFontSize3 + "px";
 						  textElem.style.fontSize = curFontSize + "px";
 						  textElem2.style.fontSize = curFontSize2 + "px";
+						  textElem4.style.fontSize = curFontSize4 + "px";
 					  }
   
 				  }
@@ -283,4 +289,3 @@
 		  </script>
 	  </body>
   </html>
-  
