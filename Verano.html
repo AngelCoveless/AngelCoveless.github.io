@@ -60,6 +60,7 @@
 				  var d = new Date();
 				  var s = "";
 				  var f = "";
+				  var esp = "________ PRÓXIMO CAMBIO ________";
 				  Minutos = d.getMinutes();
 				  Horas = d.getHours();
 				  Mes = d.getMonth();
@@ -68,12 +69,13 @@
 				  s += (10 > d.getMinutes() ? "0" : "") + d.getMinutes();
 				  f += (10 > d.getDate() ? "0" : "") + d.getDate() + " / " + (10>d.getMonth()?"0":"") + (d.getMonth()+1) + " / "+ d.getFullYear();
 				
-				  (d.getMonth() >= 7 && d.getMonth()<9)?
-				  Verano() : Invierno();
+				  
+				  Verano();
 				  textElem.textContent = s;
 				  textElem2.textContent = ProxCam;
 				  textElem3.textContent = f;
-				  textElem4.textContent = "___________  PROXIMO CAMBIO  ___________";
+				  textElem4.textContent = esp;
+				  
 				  setTimeout(updateClock, 60000 - d.getTime() % 60000 + 100);
 			  }
 			  
@@ -158,114 +160,16 @@
 				  }
 			  }
 			  
-			  function Invierno(){
-				  //Horario de invierno
-				  switch(Horas){
-					  case 8:
-						  if(Minutos<30){
-							  colorB = 1;
-							  ProxCam = "8:30";
-						  }else{
-							  colorB = 0;
-							  ProxCam = "9:00";
-						  }
-					  break;
-					  case 9:
-						  colorB = 1;
-						  ProxCam = "10:00";
-					  break;
-					  case 10:
-						  if(Minutos<30){
-							  colorB = 0;
-							  ProxCam = "10:30";
-						  }else{
-							  colorB = 1;
-							  ProxCam = "11:30";
-						  }
-					  break;
-					  case 11:
-						  if(Minutos<30){
-							  colorB = 1;
-							  ProxCam = "11:30";
-						  }else{
-							  colorB = 0;
-							  ProxCam = "12:00";
-						  }
-					  break;
-					  case 12:
-						  colorB = 1;
-						  ProxCam = "13:00";
-					  break;
-					  case 13:
-						  if(Minutos<30){
-							  colorB = 0;
-							  ProxCam = "13:30";
-						  }else{
-							  colorB = 1;
-							  ProxCam = "14:30";
-						  }
-					  break;
-					  case 14:
-						  if(Minutos<30){
-							  colorB = 1;
-							  ProxCam = "14:30";
-						  }else{
-							  colorB = 0;
-							  ProxCam = "16:00";
-						  }
-					  break;
-					  case 15:
-							  colorB = 0;
-							  ProxCam = "16:00";
-					  break;
-					  case 16:
-						  if(Minutos<15){
-							  colorB = 0;
-							  ProxCam = "16:15";
-						  }else{
-							  colorB = 1;
-							  ProxCam = "17:15";
-						  }
-					  break;
-					  
-					  case 17:
-						  if(Minutos<15 && Minutos < 30){
-							  colorB = 1;
-							  ProxCam = "17:15";
-						  }else if (Minutos>15 && Minutos < 30){
-							  colorB = 0;
-							  ProxCam = "17:30";
-						  }else{
-							  colorB = 1;
-							  ProxCam = "18:30";
-						  }
-					  break;
-  
-					  default:
-						  colorB = 0;
-						  ProxCam = "8:30";
-					  break;
-				  }
-				  if(colorB == 0){
-					  document.body.style.backgroundColor = 'green';
-				  }else{
-					  document.body.style.backgroundColor = 'red';
-				  }
-  
-				  
-				  
-  
-			  }
-  
+
 			  function updateTextSize() {
-				  for (var i = 0; 3 > i; i++) {  // Iterate for better better convergence
+				  for (var i = 0; 4 > i; i++) {  // Iterate for better better convergence
 					  curFontSize *= targetWidth / (textElem.offsetWidth / textElem.parentNode.offsetWidth);
 					  curFontSize2 *= targetWidth2 / (textElem2.offsetWidth / textElem2.parentNode.offsetWidth);
 					  curFontSize3 *= targetWidth3 / (textElem3.offsetWidth / textElem3.parentNode.offsetWidth);
 					  curFontSize4 *= targetWidth4 / (textElem4.offsetWidth / textElem4.parentNode.offsetWidth);
-					  textElem3.style.fontSize = curFontSize3 + "px";
 					  textElem.style.fontSize = curFontSize + "px";
 					  textElem2.style.fontSize = curFontSize2 + "px";
+					  textElem3.style.fontSize = curFontSize3 + "px";
 					  textElem4.style.fontSize = curFontSize4 + "px";
 					  
 					  
@@ -274,9 +178,9 @@
 						  curFontSize2 = curFontSize - (curFontSize*(1-targetWidth2));
 						  curFontSize3 = curFontSize - (curFontSize*(1-targetWidth3));
 						  curFontSize4 = curFontSize - (curFontSize*(1-targetWidth4));
-						  textElem3.style.fontSize = curFontSize3 + "px";
 						  textElem.style.fontSize = curFontSize + "px";
 						  textElem2.style.fontSize = curFontSize2 + "px";
+						  textElem3.style.fontSize = curFontSize3 + "px";
 						  textElem4.style.fontSize = curFontSize4 + "px";
 					  }
   
