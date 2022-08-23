@@ -131,12 +131,12 @@
 							  colorB = 1;
 							  ProxCam = "14:30";
 						  }else{
-							  colorB = 0;
+							  colorB = 2;
 							  ProxCam = "16:00";
 						  }
 					  break;
 					  case 15:
-							  colorB = 0;
+							  colorB = 2;
 							  ProxCam = "16:00";
 					  break;
 					  case 16:
@@ -167,11 +167,12 @@
 						  ProxCam = "8:30";
 					  break;
 				  }
-				  if(colorB == 0){
+				  if(colorB == 0)
 					  document.body.style.backgroundColor = 'green';
-				  }else{
+				  else if(colorB == 1)
 					  document.body.style.backgroundColor = 'red';
-				  }
+				  else
+					document.body.style.backgroundColor = 'black';
   
 				  
 				  
